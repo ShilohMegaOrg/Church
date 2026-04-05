@@ -30,13 +30,19 @@ const services = [
     day: "1st Sunday",
     time: "6:00 PM",
     name: "Communion Service",
-    description: "Holy Communion on the first Sunday evening of each month",
+    description: "Holy Communion — first Sunday evening each month",
+  },
+  {
+    day: "3rd Sunday",
+    time: "9:50 AM",
+    name: "Youth Ministry",
+    description: "Youth-focused service every third Sunday",
   },
 ]
 
 export function ServiceSchedule() {
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6">
+    <div className="mx-auto max-w-5xl px-4 sm:px-6">
       <FadeInItem>
         <div className="mb-4 sm:mb-6 text-center">
           <h2 className="mb-2 text-xl font-semibold text-white sm:text-2xl md:text-3xl">
@@ -46,34 +52,44 @@ export function ServiceSchedule() {
         </div>
       </FadeInItem>
 
-      <StaggerChildren className="grid gap-3 sm:gap-4 sm:grid-cols-2 xl:grid-cols-4" role="list">
+      <StaggerChildren
+        className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:items-stretch"
+        role="list"
+      >
         {services.map((service) => (
-          <FadeInItem key={service.name}>
+          <FadeInItem key={service.name} className="h-full min-h-0">
             <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
+              className="h-full"
+              whileHover={{ y: -4, scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <Card className="border-white/20 bg-white/10 backdrop-blur-sm min-w-0" role="listitem">
-            <CardContent className="p-4 sm:p-5 md:p-6 text-center">
-              <div className="mb-2 sm:mb-3 flex justify-center">
-                <div className="rounded-full bg-white/20 p-2 sm:p-3">
-                  <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                </div>
-              </div>
-              <h3 className="mb-1 text-base sm:text-lg font-semibold text-white">
-                {service.name}
-              </h3>
-              <p className="mb-2 sm:mb-3 text-xs sm:text-sm text-white/80">
-                {service.description}
-              </p>
-              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-white whitespace-nowrap">
-                <CalendarIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
-                <span className="text-sm sm:text-base font-medium whitespace-nowrap">{service.day}</span>
-                <span className="mx-0.5 sm:mx-1 flex-shrink-0">•</span>
-                <span className="text-sm sm:text-base whitespace-nowrap">{service.time}</span>
-              </div>
-            </CardContent>
-          </Card>
+              <Card
+                className="flex h-full min-h-0 min-w-0 flex-col border-white/20 bg-white/10 backdrop-blur-sm"
+                role="listitem"
+              >
+                <CardContent className="flex h-full flex-1 flex-col p-4 text-center sm:p-5 md:p-6">
+                  <div className="mb-2 flex shrink-0 justify-center sm:mb-3">
+                    <div className="rounded-full bg-white/20 p-2 sm:p-3">
+                      <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="mb-1 shrink-0 text-base font-semibold text-white sm:text-lg">
+                    {service.name}
+                  </h3>
+                  <div className="flex flex-1 flex-col justify-center px-0.5 py-1">
+                    <p className="text-balance text-xs text-white/80 sm:text-sm">
+                      {service.description}
+                    </p>
+                  </div>
+                  <div className="mt-auto shrink-0 border-t border-white/15 pt-3 text-center text-white sm:pt-4">
+                    <div className="flex items-center justify-center gap-1.5 whitespace-nowrap sm:gap-2">
+                      <CalendarIcon className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+                      <span className="text-sm font-medium sm:text-base">{service.day}</span>
+                    </div>
+                    <span className="text-sm sm:text-base">{service.time}</span>
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
           </FadeInItem>
         ))}

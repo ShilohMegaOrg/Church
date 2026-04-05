@@ -398,7 +398,7 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
       alt: "Thanksgiving Service - Monthly celebration and worship",
     },
     "Communion Service": {
-      url: "https://images.unsplash.com/photo-1531631519656-6d36bcf70247?w=1200&h=800&fit=crop&q=80",
+      url: "https://images.unsplash.com/photo-1520629716099-d147346eb224?w=1920&h=800&fit=crop&crop=center&q=80",
       alt: "Chalice and bread — Holy Communion",
     },
     "Digging Deep": {

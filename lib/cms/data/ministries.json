@@ -17,8 +17,8 @@
     "title": "Youth Ministry",
     "description": "Empowering the next generation of believers.",
     "image": {
-      "url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop",
-      "alt": "Youth Ministry"
+      "url": "/youth-gallery/IMG_8574.JPG",
+      "alt": "Youth group waving hands together at church"
     },
     "category": "age-groups",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Empowering young people to live boldly for Christ through dynamic worship, relevant teaching, and authentic community.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Let no man despise thy youth; but be thou an example of the believers...\"</p><p class=\"text-sm text-muted-foreground\">1 Timothy 4:12 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Offer</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Dynamic worship & praise</li><li>• Relevant Bible teaching</li><li>• Small groups & mentorship</li><li>• Outreach & service projects</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Vision</h3><p class=\"text-sm text-muted-foreground\">To equip youth with a strong biblical foundation, help them discover their God-given gifts, and empower them to be leaders and influencers for Christ.</p></div></div></div>"
@@ -29,8 +29,8 @@
     "title": "Young Adults",
     "description": "Building community and faith for young adults.",
     "image": {
-      "url": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
-      "alt": "Young Adults"
+      "url": "/youth-gallery/IMG_8393.JPG",
+      "alt": "Young adults smiling together at church"
     },
     "category": "age-groups",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">A community for young adults navigating career, relationships, and life decisions while growing in faith and building meaningful connections.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Trust in the Lord with all thine heart; and lean not unto thine own understanding.\"</p><p class=\"text-sm text-muted-foreground\">Proverbs 3:5 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Offer</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Bible study & discussions</li><li>• Fellowship & networking</li><li>• Life skills workshops</li><li>• Social events & activities</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Purpose</h3><p class=\"text-sm text-muted-foreground\">To provide a supportive community where young adults can grow spiritually, build lasting friendships, and discover God's purpose for their lives.</p></div></div></div>"
@@ -41,8 +41,8 @@
     "title": "Worship Ministry",
     "description": "Leading the congregation in praise and worship.",
     "image": {
-      "url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
-      "alt": "Worship Ministry"
+      "url": "/youth-gallery/IMG_8310.JPG",
+      "alt": "Worship team leading praise on stage"
     },
     "category": "service",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Leading the church in authentic worship through music, creating an atmosphere where God's presence is felt and hearts are transformed.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Make a joyful noise unto the Lord, all ye lands. Serve the Lord with gladness: come before his presence with singing.\"</p><p class=\"text-sm text-muted-foreground\">Psalm 100:1-2 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Do</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Lead Sunday worship services</li><li>• Special event performances</li><li>• Rehearsals & training</li><li>• Music & technical support</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Heart</h3><p class=\"text-sm text-muted-foreground\">We believe worship is more than music—it's a lifestyle of honoring God. Our goal is to usher people into God's presence and create space for transformation.</p></div></div></div>"
@@ -53,8 +53,8 @@
     "title": "Prayer Ministry",
     "description": "Interceding for the church and community.",
     "image": {
-      "url": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop",
-      "alt": "Prayer Ministry"
+      "url": "/youth-gallery/IMG_8339.JPG",
+      "alt": "Church member in prayer with hands raised"
     },
     "category": "service",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">A dedicated team committed to intercessory prayer, standing in the gap for our church, community, and the needs of God's people.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"The effectual fervent prayer of a righteous man availeth much.\"</p><p class=\"text-sm text-muted-foreground\">James 5:16 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Do</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Corporate prayer meetings</li><li>• Intercessory prayer chains</li><li>• Prayer for services & events</li><li>• Personal prayer requests</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Mission</h3><p class=\"text-sm text-muted-foreground\">To cover our church, leaders, and community in prayer, believing that prayer changes things and moves the hand of God.</p></div></div></div>"
@@ -77,8 +77,8 @@
     "title": "Media Ministry",
     "description": "Serving through technology and creative arts.",
     "image": {
-      "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop",
-      "alt": "Media Ministry"
+      "url": "/youth-gallery/IMG_8328.JPG",
+      "alt": "Musician at keyboard with audio equipment"
     },
     "category": "service",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Using technology and creative arts to enhance worship, share the message, and reach people through various media platforms.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"And whatsoever ye do, do it heartily, as to the Lord, and not unto men.\"</p><p class=\"text-sm text-muted-foreground\">Colossians 3:23 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Do</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Audio & video production</li><li>• Live streaming services</li><li>• Social media management</li><li>• Graphic design & content</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Purpose</h3><p class=\"text-sm text-muted-foreground\">To use modern technology and creative skills to amplify God's message, making it accessible to more people and enhancing the worship experience.</p></div></div></div>"

@@ -138,8 +138,8 @@ export default async function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&h=800&fit=crop&q=80"
-            alt="Church events and community"
+            src="/youth-gallery/IMG_8355.JPG"
+            alt="Congregation worshipping together at Shiloh Mega Parish"
             fill
             className="object-cover"
             quality={90}
