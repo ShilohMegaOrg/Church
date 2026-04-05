@@ -48,9 +48,20 @@ export function YouthGalleryGrid({ items }: YouthGalleryGridProps) {
 
   if (items.length === 0) {
     return (
-      <p className="text-center text-muted-foreground">
-        Gallery photos will appear here soon.
-      </p>
+      <div className="mx-auto max-w-lg space-y-3 text-center">
+        <p className="text-muted-foreground">
+          Gallery photos will appear here soon.
+        </p>
+        {process.env.NODE_ENV === "development" && (
+          <p className="text-xs text-muted-foreground">
+            Dev: place JPEGs in{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono">public/youth-gallery/</code>{" "}
+            (names in{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono">lib/youth-gallery.ts</code>
+            ), then refresh.
+          </p>
+        )}
+      </div>
     )
   }
 

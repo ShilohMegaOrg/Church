@@ -1,7 +1,7 @@
 /**
  * Curated youth fellowship gallery: photos live in `public/youth-gallery/`
- * (URL `/youth-gallery/...`). Add or remove entries here; most Canon exports
- * are 4752×3168.
+ * (URL `/youth-gallery/...`). The page only includes files that exist on disk.
+ * Most Canon exports are 4752×3168.
  */
 export interface YouthGalleryItem {
   id: string
@@ -17,11 +17,11 @@ const W = 4752
 const H = 3168
 
 const captions = [
-  "Youth fellowship at RCCG Shiloh Mega Parish.",
-  "Growing in faith together.",
-  "Worship, friendship, and community.",
-  "Moments from our youth gatherings.",
-  "Celebrating life in Christ as one family.",
+  'Youth fellowship at RCCG Shiloh Mega Parish.',
+  'Growing in faith together.',
+  'Worship, friendship, and community.',
+  'Moments from our youth gatherings.',
+  'Celebrating life in Christ as one family.',
 ]
 
 function captionFor(index: number): string {
@@ -29,152 +29,37 @@ function captionFor(index: number): string {
 }
 
 /**
- * Hand-picked subset of `public/youth-gallery/`: strong file sizes (quality)
- * and spread across different events. Not every file in the folder is shown.
+ * Preferred display order. Only files that exist under `public/youth-gallery/`
+ * are shown (see getYouthGalleryItems in youth-gallery-server.ts).
  */
-export const youthGalleryItems: YouthGalleryItem[] = [
-  {
-    id: "1",
-    title: "Youth fellowship",
-    caption: captionFor(0),
-    imageSrc: "/youth-gallery/IMG_8503.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "2",
-    title: "Youth fellowship",
-    caption: captionFor(1),
-    imageSrc: "/youth-gallery/IMG_8563.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "3",
-    title: "Youth fellowship",
-    caption: captionFor(2),
-    imageSrc: "/youth-gallery/IMG_8464.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "4",
-    title: "Youth fellowship",
-    caption: captionFor(3),
-    imageSrc: "/youth-gallery/IMG_8512.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "5",
-    title: "Youth fellowship",
-    caption: captionFor(4),
-    imageSrc: "/youth-gallery/IMG_8401.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "6",
-    title: "Youth fellowship",
-    caption: captionFor(0),
-    imageSrc: "/youth-gallery/IMG_8491.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "7",
-    title: "Youth fellowship",
-    caption: captionFor(1),
-    imageSrc: "/youth-gallery/IMG_8509.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "8",
-    title: "Youth fellowship",
-    caption: captionFor(2),
-    imageSrc: "/youth-gallery/IMG_8393.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "9",
-    title: "Youth fellowship",
-    caption: captionFor(3),
-    imageSrc: "/youth-gallery/IMG_8505.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "10",
-    title: "Youth fellowship",
-    caption: captionFor(4),
-    imageSrc: "/youth-gallery/IMG_8513.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "11",
-    title: "Youth fellowship",
-    caption: captionFor(0),
-    imageSrc: "/youth-gallery/IMG_8355.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "12",
-    title: "Youth fellowship",
-    caption: captionFor(1),
-    imageSrc: "/youth-gallery/IMG_8318.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "13",
-    title: "Youth fellowship",
-    caption: captionFor(2),
-    imageSrc: "/youth-gallery/IMG_8328.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "14",
-    title: "Youth fellowship",
-    caption: captionFor(3),
-    imageSrc: "/youth-gallery/IMG_8470.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "15",
-    title: "Youth fellowship",
-    caption: captionFor(4),
-    imageSrc: "/youth-gallery/IMG_8467.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "16",
-    title: "Youth fellowship",
-    caption: captionFor(0),
-    imageSrc: "/youth-gallery/IMG_8335.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "17",
-    title: "Youth fellowship",
-    caption: captionFor(1),
-    imageSrc: "/youth-gallery/IMG_8324.JPG",
-    width: W,
-    height: H,
-  },
-  {
-    id: "18",
-    title: "Youth fellowship",
-    caption: captionFor(2),
-    imageSrc: "/youth-gallery/IMG_8308.JPG",
-    width: W,
-    height: H,
-  },
+export const YOUTH_GALLERY_FILENAMES: readonly string[] = [
+  'IMG_8503.JPG',
+  'IMG_8563.JPG',
+  'IMG_8464.JPG',
+  'IMG_8512.JPG',
+  'IMG_8401.JPG',
+  'IMG_8491.JPG',
+  'IMG_8509.JPG',
+  'IMG_8393.JPG',
+  'IMG_8505.JPG',
+  'IMG_8513.JPG',
+  'IMG_8355.JPG',
+  'IMG_8318.JPG',
+  'IMG_8328.JPG',
+  'IMG_8470.JPG',
+  'IMG_8467.JPG',
+  'IMG_8335.JPG',
+  'IMG_8324.JPG',
+  'IMG_8308.JPG',
 ]
+
+export function buildYouthGalleryItems(filenames: string[]): YouthGalleryItem[] {
+  return filenames.map((filename, index) => ({
+    id: String(index + 1),
+    title: 'Youth fellowship',
+    caption: captionFor(index),
+    imageSrc: `/youth-gallery/${filename}`,
+    width: W,
+    height: H,
+  }))
+}
