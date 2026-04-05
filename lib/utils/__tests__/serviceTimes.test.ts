@@ -3,6 +3,7 @@ import {
   getNextService,
   formatTimeRemaining,
   serviceTimes,
+  selectEventsForHomepageCarousel,
 } from '../serviceTimes'
 import type { Event } from '@/lib/cms/types'
 
@@ -143,25 +144,24 @@ describe('getNextService', () => {
   })
 
   it('should return next Sunday service when today is before Sunday', () => {
-    // Set to Wednesday, January 22, 2025
-    jest.setSystemTime(new Date('2025-01-22T10:00:00Z'))
+    // Thursday: next Sunday (Jan 26) comes before the following Wednesday (Jan 29)
+    jest.setSystemTime(new Date('2025-01-23T10:00:00Z'))
     const result = getNextService()
     expect(result).not.toBeNull()
     expect(result?.service.name).toBe('Sunday Service')
   })
 
   it('should preserve service minutes when calculating next service time', () => {
-    // Set to Wednesday, January 22, 2025
-    jest.setSystemTime(new Date('2025-01-22T10:00:00Z'))
+    jest.setSystemTime(new Date('2025-01-23T10:00:00Z'))
     const result = getNextService()
     expect(result).not.toBeNull()
     expect(result?.service.name).toBe('Sunday Service')
-    expect(result?.date.getMinutes()).toBe(20)
+    expect(result?.date.getMinutes()).toBe(50)
   })
 
   it('should return next Wednesday service when today is before Wednesday', () => {
-    // Set to Sunday, January 19, 2025
-    jest.setSystemTime(new Date('2025-01-19T10:00:00Z'))
+    // Sunday evening after morning service: next Wednesday is before next Sunday
+    jest.setSystemTime(new Date('2025-01-26T22:00:00Z'))
     const result = getNextService()
     expect(result).not.toBeNull()
     expect(result?.service.name).toBe('Digging Deep / Faith Clinic')
@@ -234,12 +234,65 @@ describe('formatTimeRemaining', () => {
   })
 })
 
+describe('selectEventsForHomepageCarousel', () => {
+  it('should keep Communion Service in the carousel when many earlier CMS events would fill the slice', () => {
+    const base = new Date('2026-06-01T12:00:00Z')
+    const cms: Event[] = Array.from({ length: 11 }, (_, i) => ({
+      id: `cms-${i}`,
+      slug: `cms-${i}`,
+      title: `CMS Event ${i}`,
+      description: 'd',
+      date: new Date(base.getTime() + i * 86400000),
+      time: '10:00 AM',
+      image: { url: 'https://example.com/x.jpg', alt: 'x' },
+    }))
+    const communion: Event = {
+      id: 'rec-communion',
+      slug: 'communion-service-2026-06-07',
+      title: 'Communion Service',
+      description: 'Holy Communion',
+      date: new Date('2026-06-07T23:00:00Z'),
+      time: '6:00 PM',
+      image: { url: 'https://images.unsplash.com/photo-test', alt: 'Communion' },
+    }
+    const pool = [...cms, communion].sort(
+      (a, b) => parseEventDateTime(a).getTime() - parseEventDateTime(b).getTime(),
+    )
+    const selected = selectEventsForHomepageCarousel(pool, 10)
+    expect(selected.some((e) => e.title === 'Communion Service')).toBe(true)
+    expect(selected).toHaveLength(10)
+  })
+
+  it('should return all events sorted by date when count is at or below max', () => {
+    const a: Event = {
+      id: 'a',
+      slug: 'a',
+      title: 'Later',
+      description: '',
+      date: new Date('2026-07-01T12:00:00Z'),
+      time: '10:00 AM',
+      image: { url: 'https://example.com/a.jpg', alt: '' },
+    }
+    const b: Event = {
+      id: 'b',
+      slug: 'b',
+      title: 'Earlier',
+      description: '',
+      date: new Date('2026-06-01T12:00:00Z'),
+      time: '10:00 AM',
+      image: { url: 'https://example.com/b.jpg', alt: '' },
+    }
+    const selected = selectEventsForHomepageCarousel([a, b], 10)
+    expect(selected.map((e) => e.title)).toEqual(['Earlier', 'Later'])
+  })
+})
+
 describe('serviceTimes', () => {
   it('should have Sunday Service defined', () => {
     const sundayService = serviceTimes.find((s) => s.day === 'sunday')
     expect(sundayService).toBeDefined()
     expect(sundayService?.name).toBe('Sunday Service')
-    expect(sundayService?.time).toBe('9:20 AM')
+    expect(sundayService?.time).toBe('9:50 AM')
   })
 
   it('should have Wednesday service defined', () => {
@@ -254,15 +307,23 @@ describe('serviceTimes', () => {
     const youthService = serviceTimes.find((s) => s.day === 'third-sunday')
     expect(youthService).toBeDefined()
     expect(youthService?.name).toBe('Youth Ministry')
-    expect(youthService?.time).toBe('9:20 AM')
+    expect(youthService?.time).toBe('9:50 AM')
     expect(youthService?.recurring).toBe('monthly-third')
   })
 
   it('should have Thanksgiving Service defined', () => {
-    const thanksgivingService = serviceTimes.find((s) => s.day === 'first-sunday')
+    const thanksgivingService = serviceTimes.find((s) => s.name === 'Thanksgiving Service')
     expect(thanksgivingService).toBeDefined()
-    expect(thanksgivingService?.name).toBe('Thanksgiving Service')
-    expect(thanksgivingService?.time).toBe('9:20 AM')
+    expect(thanksgivingService?.day).toBe('first-sunday')
+    expect(thanksgivingService?.time).toBe('9:50 AM')
     expect(thanksgivingService?.recurring).toBe('monthly-first')
+  })
+
+  it('should have Communion Service defined', () => {
+    const communionService = serviceTimes.find((s) => s.name === 'Communion Service')
+    expect(communionService).toBeDefined()
+    expect(communionService?.day).toBe('first-sunday')
+    expect(communionService?.time).toBe('6:00 PM')
+    expect(communionService?.recurring).toBe('monthly-first')
   })
 })

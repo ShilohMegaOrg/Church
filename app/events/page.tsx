@@ -1,6 +1,6 @@
 import { EventCategories } from "@/components/sections/EventCategories"
 import { getEvents } from "@/lib/cms/queries"
-import { generateRecurringEvents } from "@/lib/utils/serviceTimes"
+import { generateRecurringEvents, parseEventDateTime } from "@/lib/utils/serviceTimes"
 
 export const metadata = {
   title: "Events | RCCG Shiloh Mega Parish",
@@ -12,7 +12,7 @@ export default async function EventsPage() {
   const recurringEvents = generateRecurringEvents(6) // Generate 6 months ahead for activities page
   
   // Merge events and deduplicate by title
-  // For recurring event titles (Bible Study Series, Faith Clinic, Youth Ministry, Thanksgiving Service),
+  // For recurring event titles (Bible Study Series, Faith Clinic, Youth Ministry, Thanksgiving, Communion),
   // prefer recurring events over static ones to ensure we always show the next upcoming occurrence
   const recurringEventTitles = new Set(recurringEvents.map(e => e.title))
   
@@ -22,7 +22,12 @@ export default async function EventsPage() {
   )
   
   // Merge: static events (excluding recurring ones) + all recurring events
-  const events = [...filteredStaticEvents, ...recurringEvents]
+  const merged = [...filteredStaticEvents, ...recurringEvents]
+
+  const now = new Date()
+  const events = merged
+    .filter((event) => parseEventDateTime(event) >= now)
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
 
   return (
     <div className="container py-12">

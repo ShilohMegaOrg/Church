@@ -10,7 +10,7 @@ import Link from "next/link"
 const services = [
   {
     day: "Every Sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     name: "Sunday Service",
     description: "Main worship service",
   },
@@ -22,9 +22,15 @@ const services = [
   },
   {
     day: "1st Sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     name: "Thanksgiving Service",
     description: "Monthly thanksgiving celebration",
+  },
+  {
+    day: "1st Sunday",
+    time: "6:00 PM",
+    name: "Communion Service",
+    description: "Holy Communion on the first Sunday evening of each month",
   },
 ]
 
@@ -40,9 +46,9 @@ export function ServiceSchedule() {
         </div>
       </FadeInItem>
 
-      <StaggerChildren className="grid gap-3 sm:gap-4 md:grid-cols-3" role="list">
+      <StaggerChildren className="grid gap-3 sm:gap-4 sm:grid-cols-2 xl:grid-cols-4" role="list">
         {services.map((service) => (
-          <FadeInItem key={service.day}>
+          <FadeInItem key={service.name}>
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ duration: 0.2 }}

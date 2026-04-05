@@ -13,7 +13,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { Calendar, ArrowRight, Heart } from "lucide-react"
 import { getPastors, getMinistries, getEvents, getTestimonials, getLatestSermon } from "@/lib/cms/queries"
-import { parseEventDateTime, generateRecurringEvents } from "@/lib/utils/serviceTimes"
+import {
+  parseEventDateTime,
+  generateRecurringEvents,
+  selectEventsForHomepageCarousel,
+} from "@/lib/utils/serviceTimes"
 import { END_OF_DAY_HOUR, END_OF_DAY_MINUTE, END_OF_DAY_SECOND, END_OF_DAY_MILLISECOND } from "@/lib/constants"
 import type { Event } from "@/lib/cms/types"
 
@@ -21,7 +25,7 @@ export default async function HomePage() {
   const [pastors, ministries, events, testimonials, latestSermon] = await Promise.all([
     getPastors(),
     getMinistries(),
-    getEvents(10),
+    getEvents(25),
     getTestimonials(),
     getLatestSermon(),
   ])
@@ -32,7 +36,7 @@ export default async function HomePage() {
 
   // Filter to only upcoming events with images, exclude Christmas Carol Night from carousel
   const now = new Date()
-  const featuredEvents = allEvents
+  const upcomingWithImages = allEvents
     .filter((e) => {
       const eventDate = parseEventDateTime(e, END_OF_DAY_HOUR) // Use end of day hour if no time specified
       if (!e.time) {
@@ -55,7 +59,8 @@ export default async function HomePage() {
       return acc
     }, [] as Event[])
     .sort((a, b) => parseEventDateTime(a).getTime() - parseEventDateTime(b).getTime())
-    .slice(0, 10)
+
+  const featuredEvents = selectEventsForHomepageCarousel(upcomingWithImages, 10)
 
   return (
     <div className="flex flex-col">
