@@ -19,25 +19,30 @@ export function HeroSection({ events }: HeroSectionProps) {
       aria-label="Hero section"
     >
       {/* Full-width background image */}
-      <motion.div
-        className="absolute inset-0 z-0 overflow-hidden"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-      >
-        <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.15 }}
+          animate={{ scale: [1.15, 1, 1.08, 1.02, 1.12] }}
+          transition={{
+            duration: 25,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        >
           <Image
-            src="/images/shiloh-no-text.png"
-            alt="RCCG Shiloh Mega Parish - A place of salvation and hope"
+            src="/youth-gallery/IMG_8412.JPG"
+            alt="Worship team leading praise at RCCG Shiloh Mega Parish"
             fill
             className="object-cover object-center"
             priority
             quality={90}
           />
-        </div>
+        </motion.div>
         {/* Lighter overlay to let image show through more */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-      </motion.div>
+      </div>
 
       {/* SHILOH text overlay - positioned in upper area like original */}
       <motion.div

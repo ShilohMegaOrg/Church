@@ -10,5 +10,11 @@
     "name": "Jane",
     "role": "Member",
     "content": "I found my spiritual home here. The pastors are caring and the ministries are life-changing."
+  },
+  {
+    "id": "3",
+    "name": "Tolu",
+    "role": "Volunteer",
+    "content": "Serving in this church has been one of the greatest blessings of my life. Through volunteering, I've grown closer to God and discovered gifts I never knew I had. Giving my time here has given me so much more in return."
   }
 ]

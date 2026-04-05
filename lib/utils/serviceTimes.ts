@@ -402,8 +402,8 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
       alt: "Chalice and bread — Holy Communion",
     },
     "Digging Deep": {
-      url: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&h=800&fit=crop&q=80",
-      alt: "Bible Study Series - Digging Deep",
+      url: "/youth-gallery/IMG_8487.JPG",
+      alt: "Pastor preaching at Shiloh Mega Parish",
     },
     "Faith Clinic": {
       url: "/images/faith_clinic.avif",
