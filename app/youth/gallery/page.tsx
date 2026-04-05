@@ -16,8 +16,8 @@ export default function YouthGalleryPage() {
         </p>
         <h1 className="mb-4 text-4xl font-bold">Gallery</h1>
         <p className="text-lg text-muted-foreground">
-          Moments from our youth events, worship, fellowship, and outreach.
-          Select a photo to view it larger.
+          Selected highlights from our youth events, worship, fellowship, and
+          outreach. Select a photo to view it larger.
         </p>
       </div>
 
