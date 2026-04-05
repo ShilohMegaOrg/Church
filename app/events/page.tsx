@@ -1,6 +1,6 @@
 import { EventCategories } from "@/components/sections/EventCategories"
 import { getEvents } from "@/lib/cms/queries"
-import { generateRecurringEvents } from "@/lib/utils/serviceTimes"
+import { generateRecurringEvents, parseEventDateTime } from "@/lib/utils/serviceTimes"
 
 export const metadata = {
   title: "Events | RCCG Shiloh Mega Parish",
@@ -22,7 +22,12 @@ export default async function EventsPage() {
   )
   
   // Merge: static events (excluding recurring ones) + all recurring events
-  const events = [...filteredStaticEvents, ...recurringEvents]
+  const merged = [...filteredStaticEvents, ...recurringEvents]
+
+  const now = new Date()
+  const events = merged
+    .filter((event) => parseEventDateTime(event) >= now)
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
 
   return (
     <div className="container py-12">
