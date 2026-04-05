@@ -89,6 +89,9 @@ export interface ServiceTime {
   alternateWith?: string // Name of the service this alternates with
 }
 
+/** First calendar day Communion Service appears on the schedule (first Sunday cadence from this date). */
+export const COMMUNION_SERVICE_FIRST_DATE = new Date(2026, 3, 5)
+
 export const serviceTimes: ServiceTime[] = [
   {
     name: "Sunday Service",
@@ -134,7 +137,56 @@ export const serviceTimes: ServiceTime[] = [
     description: "Monthly thanksgiving celebration",
     recurring: "monthly-first",
   },
+  {
+    name: "Communion Service",
+    day: "first-sunday",
+    time: "6:00 PM",
+    description: "Holy Communion on the first Sunday evening of each month",
+    recurring: "monthly-first",
+  },
 ]
+
+/**
+ * Recurring highlights for the homepage "What's Happening" carousel. When many
+ * CMS events are upcoming, these titles are kept in the rotation (not pushed out
+ * by the slice limit). Order is display preference among priority items only.
+ */
+export const HOMEPAGE_CAROUSEL_PRIORITY_TITLES: readonly string[] = [
+  'Communion Service',
+  'Thanksgiving Service',
+  'Youth Ministry',
+  'Bible Study Series',
+  'Faith Clinic',
+] as const
+
+/**
+ * Selects up to {@link max} events for the homepage carousel, always including
+ * any upcoming events whose titles appear in {@link HOMEPAGE_CAROUSEL_PRIORITY_TITLES}
+ * when present in {@link events}. Remaining slots are filled by earliest upcoming dates.
+ */
+export function selectEventsForHomepageCarousel(events: Event[], max: number = 10): Event[] {
+  if (events.length <= max) {
+    return [...events].sort(
+      (a, b) => parseEventDateTime(a).getTime() - parseEventDateTime(b).getTime(),
+    )
+  }
+  const sorted = [...events].sort(
+    (a, b) => parseEventDateTime(a).getTime() - parseEventDateTime(b).getTime(),
+  )
+  const priorityIds = new Set<string>()
+  for (const title of HOMEPAGE_CAROUSEL_PRIORITY_TITLES) {
+    const found = sorted.find((e) => e.title === title)
+    if (found) {
+      priorityIds.add(found.id)
+    }
+  }
+  const priority = sorted.filter((e) => priorityIds.has(e.id))
+  const rest = sorted.filter((e) => !priorityIds.has(e.id))
+  const combined = [...priority, ...rest].slice(0, max)
+  return combined.sort(
+    (a, b) => parseEventDateTime(a).getTime() - parseEventDateTime(b).getTime(),
+  )
+}
 
 /**
  * Gets the next upcoming service or special event, whichever is sooner.
@@ -168,11 +220,18 @@ export function getNextService(events?: Event[]): {
           matches = true
         }
       } else if (service.day === "first-sunday" && checkDay === 0) {
-        // First Sunday of month - Thanksgiving Service
+        // First Sunday of month — Thanksgiving (morning) and Communion (evening)
         const firstSunday = getFirstSundayOfMonth(checkDate)
         if (checkDate.getDate() === firstSunday.getDate() && 
             checkDate.getMonth() === firstSunday.getMonth()) {
           matches = true
+        }
+        if (matches && service.name === "Communion Service") {
+          const dayStart = new Date(checkDate)
+          dayStart.setHours(0, 0, 0, 0)
+          if (dayStart < COMMUNION_SERVICE_FIRST_DATE) {
+            matches = false
+          }
         }
       } else if (service.day === "third-sunday" && checkDay === 0) {
         // Third Sunday of month - Youth Ministry
@@ -338,6 +397,10 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
       url: "/images/thanksgiving_service.avif",
       alt: "Thanksgiving Service - Monthly celebration and worship",
     },
+    "Communion Service": {
+      url: "https://images.unsplash.com/photo-1531631519656-6d36bcf70247?w=1200&h=800&fit=crop&q=80",
+      alt: "Chalice and bread — Holy Communion",
+    },
     "Digging Deep": {
       url: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&h=800&fit=crop&q=80",
       alt: "Bible Study Series - Digging Deep",
@@ -352,6 +415,7 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
   const eventContent: Record<string, string> = {
     "Youth Ministry": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Empowering the next generation to live boldly for Christ. Through dynamic worship, relevant teaching, and authentic community, we help young people discover their purpose and make an impact.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Let no man despise thy youth; but be thou an example of the believers...\"</p><p class=\"text-sm text-muted-foreground mb-3\">1 Timothy 4:12 (KJV)</p><p class=\"text-lg font-medium italic mb-2\">\"Remember now thy Creator in the days of thy youth...\"</p><p class=\"text-sm text-muted-foreground\">Ecclesiastes 12:1 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Offer</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Dynamic worship & praise</li><li>• Relevant Bible teaching</li><li>• Small groups & mentorship</li><li>• Outreach & service projects</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Vision</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Equip with biblical foundation</li><li>• Discover God-given gifts</li><li>• Create safe, authentic space</li><li>• Empower as leaders & influencers</li></ul></div></div></div>",
     "Thanksgiving Service": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Join us for our monthly thanksgiving celebration as we express gratitude to God for His faithfulness, provision, and blessings in our lives and community.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.\"</p><p class=\"text-sm text-muted-foreground mb-3\">Psalm 100:4 (KJV)</p><p class=\"text-lg font-medium italic mb-2\">\"In every thing give thanks: for this is the will of God in Christ Jesus concerning you.\"</p><p class=\"text-sm text-muted-foreground\">1 Thessalonians 5:18 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What to Expect</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Testimonies of God's faithfulness</li><li>• Special worship & praise</li><li>• Thanksgiving offerings</li><li>• Prayer & celebration</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Why We Give Thanks</h3><p class=\"text-sm text-muted-foreground\">Gratitude transforms our perspective and opens our hearts to receive more of God's blessings. As we give thanks, we acknowledge His goodness and faithfulness in every season of life.</p></div></div></div>",
+    "Communion Service": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Join us on the first Sunday evening of each month as we partake together in the Lord's Supper—remembering Christ's sacrifice, proclaiming His death until He comes, and renewing our covenant with Him as one body.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"For as often as ye eat this bread, and drink this cup, ye do shew the Lord's death till he come.\"</p><p class=\"text-sm text-muted-foreground mb-3\">1 Corinthians 11:26 (KJV)</p><p class=\"text-lg font-medium italic mb-2\">\"The cup of blessing which we bless, is it not the communion of the blood of Christ? The bread which we break, is it not the communion of the body of Christ?\"</p><p class=\"text-sm text-muted-foreground\">1 Corinthians 10:16 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What to Expect</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Worship and reflection</li><li>• Institution of the Lord's Supper</li><li>• Bread and cup in fellowship</li><li>• Prayer and thanksgiving</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Who May Partake</h3><p class=\"text-sm text-muted-foreground\">We welcome believers who trust in Jesus Christ alone for salvation and seek to walk in obedience to Him. If you are visiting and have questions, speak with an usher or pastor before the service.</p></div></div></div>",
     "Digging Deep": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Join us for an in-depth exploration of Scripture. We help you understand God's Word, apply biblical principles to daily life, and grow in your relationship with Christ.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Study to shew thyself approved unto God... rightly dividing the word of truth.\"</p><p class=\"text-sm text-muted-foreground mb-3\">2 Timothy 2:15 (KJV)</p><p class=\"text-lg font-medium italic mb-2\">\"Thy word is a lamp unto my feet, and a light unto my path.\"</p><p class=\"text-sm text-muted-foreground\">Psalm 119:105 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">Study Format</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Verse-by-verse study</li><li>• Interactive discussions</li><li>• Practical application</li><li>• Prayer & reflection</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Why It Matters</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Reveals God's will</li><li>• Provides wisdom & guidance</li><li>• Strengthens faith</li><li>• Transforms thinking (Romans 12:2)</li></ul></div></div></div>",
     "Faith Clinic": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">A dedicated time for healing, restoration, and breakthrough. Through prayer, worship, and God's Word, we seek His intervention for physical, emotional, and spiritual healing.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"...with his stripes we are healed.\"</p><p class=\"text-sm text-muted-foreground mb-3\">Isaiah 53:5 (KJV)</p><p class=\"text-lg font-medium italic mb-2\">\"The prayer of faith shall save the sick, and the Lord shall raise him up.\"</p><p class=\"text-sm text-muted-foreground\">James 5:14-15 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">Service Elements</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Intimate worship & prayer</li><li>• Teaching on faith & healing</li><li>• Corporate intercession</li><li>• Individual prayer & anointing</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Belief</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• God desires to heal (3 John 1:2)</li><li>• Power of prayer & faith (Mark 11:24)</li><li>• Jesus' authority over sickness (Matthew 8:17)</li><li>• Believe and receive (Mark 5:34)</li></ul></div></div></div>",
   }
@@ -415,7 +479,7 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
       continue
     }
 
-    // Handle monthly recurring services (Youth Ministry, Thanksgiving)
+    // Handle monthly recurring services (Youth Ministry, Thanksgiving, Communion)
     if (service.recurring !== "monthly-first" && service.recurring !== "monthly-third") {
       continue
     }
@@ -437,6 +501,14 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
         const parsedTime = parseTimeString(service.time)
         if (parsedTime) {
           candidateDate.setHours(parsedTime.hours, parsedTime.minutes, 0, 0)
+        }
+
+        if (service.name === "Communion Service") {
+          const dayOnly = new Date(candidateDate)
+          dayOnly.setHours(0, 0, 0, 0)
+          if (dayOnly < COMMUNION_SERVICE_FIRST_DATE) {
+            continue
+          }
         }
 
         // Check if this date is in the future (hasn't passed yet)

@@ -12,7 +12,7 @@ export default async function EventsPage() {
   const recurringEvents = generateRecurringEvents(6) // Generate 6 months ahead for activities page
   
   // Merge events and deduplicate by title
-  // For recurring event titles (Bible Study Series, Faith Clinic, Youth Ministry, Thanksgiving Service),
+  // For recurring event titles (Bible Study Series, Faith Clinic, Youth Ministry, Thanksgiving, Communion),
   // prefer recurring events over static ones to ensure we always show the next upcoming occurrence
   const recurringEventTitles = new Set(recurringEvents.map(e => e.title))
   

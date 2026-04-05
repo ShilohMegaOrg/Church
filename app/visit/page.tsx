@@ -81,6 +81,10 @@ export default function VisitPage() {
               <p className="font-semibold">Thanksgiving Service</p>
               <p className="text-muted-foreground">1st Sunday of each month at 9:50 AM</p>
             </div>
+            <div>
+              <p className="font-semibold">Communion Service</p>
+              <p className="text-muted-foreground">1st Sunday of each month at 6:00 PM</p>
+            </div>
           </CardContent>
         </Card>
       </div>
