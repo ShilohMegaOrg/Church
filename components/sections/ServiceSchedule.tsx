@@ -26,23 +26,11 @@ const services = [
     name: "Thanksgiving Service",
     description: "Monthly thanksgiving celebration",
   },
-  {
-    day: "1st Sunday",
-    time: "6:00 PM",
-    name: "Communion Service",
-    description: "Holy Communion — first Sunday evening each month",
-  },
-  {
-    day: "3rd Sunday",
-    time: "9:50 AM",
-    name: "Youth Ministry",
-    description: "Youth-focused service every third Sunday",
-  },
 ]
 
 export function ServiceSchedule() {
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6">
+    <div className="mx-auto max-w-4xl px-4 sm:px-6">
       <FadeInItem>
         <div className="mb-4 sm:mb-6 text-center">
           <h2 className="mb-2 text-xl font-semibold text-white sm:text-2xl md:text-3xl">
@@ -53,7 +41,7 @@ export function ServiceSchedule() {
       </FadeInItem>
 
       <StaggerChildren
-        className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:items-stretch"
+        className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:items-stretch"
         role="list"
       >
         {services.map((service) => (
