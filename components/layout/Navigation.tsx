@@ -17,6 +17,7 @@ interface NavigationProps {
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/events", label: "Activities" },
+  { href: "/youth/gallery", label: "Youth Gallery" },
   { href: "/about", label: "About Us" },
   { href: "/visit", label: "Visit Us" },
   { href: "/sermons", label: "Sermons" },
