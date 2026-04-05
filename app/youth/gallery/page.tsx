@@ -1,5 +1,5 @@
 import { YouthGalleryGrid } from "@/components/sections/YouthGalleryGrid"
-import { getYouthGalleryItems } from "@/lib/youth-gallery-server"
+import { youthGalleryItems } from "@/lib/youth-gallery"
 
 export const metadata = {
   title: "Youth Gallery | RCCG Shiloh Mega Parish",
@@ -8,7 +8,6 @@ export const metadata = {
 }
 
 export default function YouthGalleryPage() {
-  const items = getYouthGalleryItems()
   return (
     <div className="container py-12">
       <div className="mb-10 max-w-2xl text-center mx-auto">
@@ -22,7 +21,7 @@ export default function YouthGalleryPage() {
         </p>
       </div>
 
-      <YouthGalleryGrid items={items} />
+      <YouthGalleryGrid items={youthGalleryItems} />
     </div>
   )
 }

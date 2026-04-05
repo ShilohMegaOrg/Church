@@ -54,11 +54,11 @@ export function YouthGalleryGrid({ items }: YouthGalleryGridProps) {
         </p>
         {process.env.NODE_ENV === "development" && (
           <p className="text-xs text-muted-foreground">
-            Dev: place JPEGs in{" "}
+            Dev: add JPEGs under{" "}
             <code className="rounded bg-muted px-1 py-0.5 font-mono">public/youth-gallery/</code>{" "}
-            (names in{" "}
-            <code className="rounded bg-muted px-1 py-0.5 font-mono">lib/youth-gallery.ts</code>
-            ), then refresh.
+            and list filenames in{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono">YOUTH_GALLERY_FILENAMES</code>{" "}
+            in <code className="font-mono">lib/youth-gallery.ts</code>.
           </p>
         )}
       </div>
