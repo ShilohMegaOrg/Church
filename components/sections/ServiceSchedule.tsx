@@ -10,7 +10,7 @@ import Link from "next/link"
 const services = [
   {
     day: "Every Sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     name: "Sunday Service",
     description: "Main worship service",
   },
@@ -22,7 +22,7 @@ const services = [
   },
   {
     day: "1st Sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     name: "Thanksgiving Service",
     description: "Monthly thanksgiving celebration",
   },

@@ -93,7 +93,7 @@ export const serviceTimes: ServiceTime[] = [
   {
     name: "Sunday Service",
     day: "sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     description: "Main worship service",
     recurring: "weekly",
   },
@@ -123,14 +123,14 @@ export const serviceTimes: ServiceTime[] = [
   {
     name: "Youth Ministry",
     day: "third-sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     description: "Youth-focused service",
     recurring: "monthly-third",
   },
   {
     name: "Thanksgiving Service",
     day: "first-sunday",
-    time: "9:20 AM",
+    time: "9:50 AM",
     description: "Monthly thanksgiving celebration",
     recurring: "monthly-first",
   },

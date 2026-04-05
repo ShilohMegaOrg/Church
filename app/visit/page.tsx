@@ -67,7 +67,7 @@ export default function VisitPage() {
           <CardContent className="space-y-4">
             <div>
               <p className="font-semibold">Sunday Service</p>
-              <p className="text-muted-foreground">Every Sunday at 9:20 AM</p>
+              <p className="text-muted-foreground">Every Sunday at 9:50 AM</p>
             </div>
             <div>
               <p className="font-semibold">Digging Deep / Faith Clinic</p>
@@ -75,11 +75,11 @@ export default function VisitPage() {
             </div>
             <div>
               <p className="font-semibold">Youth Ministry</p>
-              <p className="text-muted-foreground">3rd Sunday of each month at 9:20 AM</p>
+              <p className="text-muted-foreground">3rd Sunday of each month at 9:50 AM</p>
             </div>
             <div>
               <p className="font-semibold">Thanksgiving Service</p>
-              <p className="text-muted-foreground">1st Sunday of each month at 9:20 AM</p>
+              <p className="text-muted-foreground">1st Sunday of each month at 9:50 AM</p>
             </div>
           </CardContent>
         </Card>

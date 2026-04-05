@@ -143,25 +143,24 @@ describe('getNextService', () => {
   })
 
   it('should return next Sunday service when today is before Sunday', () => {
-    // Set to Wednesday, January 22, 2025
-    jest.setSystemTime(new Date('2025-01-22T10:00:00Z'))
+    // Thursday: next Sunday (Jan 26) comes before the following Wednesday (Jan 29)
+    jest.setSystemTime(new Date('2025-01-23T10:00:00Z'))
     const result = getNextService()
     expect(result).not.toBeNull()
     expect(result?.service.name).toBe('Sunday Service')
   })
 
   it('should preserve service minutes when calculating next service time', () => {
-    // Set to Wednesday, January 22, 2025
-    jest.setSystemTime(new Date('2025-01-22T10:00:00Z'))
+    jest.setSystemTime(new Date('2025-01-23T10:00:00Z'))
     const result = getNextService()
     expect(result).not.toBeNull()
     expect(result?.service.name).toBe('Sunday Service')
-    expect(result?.date.getMinutes()).toBe(20)
+    expect(result?.date.getMinutes()).toBe(50)
   })
 
   it('should return next Wednesday service when today is before Wednesday', () => {
-    // Set to Sunday, January 19, 2025
-    jest.setSystemTime(new Date('2025-01-19T10:00:00Z'))
+    // Sunday evening after morning service: next Wednesday is before next Sunday
+    jest.setSystemTime(new Date('2025-01-26T22:00:00Z'))
     const result = getNextService()
     expect(result).not.toBeNull()
     expect(result?.service.name).toBe('Digging Deep / Faith Clinic')
@@ -239,7 +238,7 @@ describe('serviceTimes', () => {
     const sundayService = serviceTimes.find((s) => s.day === 'sunday')
     expect(sundayService).toBeDefined()
     expect(sundayService?.name).toBe('Sunday Service')
-    expect(sundayService?.time).toBe('9:20 AM')
+    expect(sundayService?.time).toBe('9:50 AM')
   })
 
   it('should have Wednesday service defined', () => {
@@ -254,7 +253,7 @@ describe('serviceTimes', () => {
     const youthService = serviceTimes.find((s) => s.day === 'third-sunday')
     expect(youthService).toBeDefined()
     expect(youthService?.name).toBe('Youth Ministry')
-    expect(youthService?.time).toBe('9:20 AM')
+    expect(youthService?.time).toBe('9:50 AM')
     expect(youthService?.recurring).toBe('monthly-third')
   })
 
@@ -262,7 +261,7 @@ describe('serviceTimes', () => {
     const thanksgivingService = serviceTimes.find((s) => s.day === 'first-sunday')
     expect(thanksgivingService).toBeDefined()
     expect(thanksgivingService?.name).toBe('Thanksgiving Service')
-    expect(thanksgivingService?.time).toBe('9:20 AM')
+    expect(thanksgivingService?.time).toBe('9:50 AM')
     expect(thanksgivingService?.recurring).toBe('monthly-first')
   })
 })
