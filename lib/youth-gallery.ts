@@ -53,7 +53,7 @@ export const youthGalleryItems: YouthGalleryItem[] = [
     id: "3",
     title: "Youth fellowship",
     caption: captionFor(2),
-    imageSrc: "/youth-gallery/IMG_8514.JPG",
+    imageSrc: "/youth-gallery/IMG_8577.JPG",
     width: W,
     height: H,
   },
