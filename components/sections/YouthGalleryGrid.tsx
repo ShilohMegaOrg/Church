@@ -71,6 +71,8 @@ export function YouthGalleryGrid({ items }: YouthGalleryGridProps) {
                   src={item.imageSrc}
                   alt={item.title}
                   fill
+                  /* Multi-MB full-res JPEGs: default optimizer often 500s on serverless */
+                  unoptimized
                   className="object-cover transition duration-300 group-hover:scale-[1.02]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
@@ -118,6 +120,7 @@ export function YouthGalleryGrid({ items }: YouthGalleryGridProps) {
                   src={active.imageSrc}
                   alt={active.title}
                   fill
+                  unoptimized
                   className="object-contain"
                   sizes="(max-width: 896px) 100vw, 896px"
                   priority
