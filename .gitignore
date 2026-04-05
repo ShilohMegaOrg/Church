@@ -66,3 +66,6 @@ Thumbs.db
 
 
 /lib/generated/prisma
+
+# Duplicate youth assets: keep images only under public/youth-gallery/ (not a second root copy)
+/youthGallery/

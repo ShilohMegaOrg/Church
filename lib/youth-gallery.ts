@@ -1,7 +1,7 @@
 /**
- * Curated youth fellowship gallery: high-resolution parish photos from
- * `/youthGallery` (served at `/youth-gallery`). Add or remove entries here;
- * most Canon exports are 4752×3168.
+ * Curated youth fellowship gallery: photos live in `public/youth-gallery/`
+ * (URL `/youth-gallery/...`). Add or remove entries here; most Canon exports
+ * are 4752×3168.
  */
 export interface YouthGalleryItem {
   id: string
@@ -29,7 +29,7 @@ function captionFor(index: number): string {
 }
 
 /**
- * Hand-picked subset of the `youthGallery` folder: strong file sizes (quality)
+ * Hand-picked subset of `public/youth-gallery/`: strong file sizes (quality)
  * and spread across different events. Not every file in the folder is shown.
  */
 export const youthGalleryItems: YouthGalleryItem[] = [
