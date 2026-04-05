@@ -1,5 +1,18 @@
 [
   {
+    "id": "3",
+    "slug": "rain-of-restoration-in-our-due-season",
+    "title": "Rain of Restoration in Our Due Season",
+    "description": "A powerful message on God's faithfulness to restore all that has been lost — in His perfect timing, the rain of restoration will fall.",
+    "date": "2026-03-29T00:00:00.000Z",
+    "speaker": "Pastor Moses Olise",
+    "image": {
+      "url": "/youth-gallery/IMG_8439.JPG",
+      "alt": "Pastor Moses Olise preaching Rain of Restoration at Shiloh Mega Parish"
+    },
+    "videoUrl": "https://www.youtube.com/watch?v=qIQTOt_tpGc"
+  },
+  {
     "id": "1",
     "slug": "this-is-not-the-end",
     "title": "This is not the end",
