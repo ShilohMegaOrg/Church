@@ -388,7 +388,7 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
   endDate.setMonth(endDate.getMonth() + monthsAhead)
 
   // Image mappings for recurring events
-  const eventImages: Record<string, { url: string; alt: string }> = {
+  const eventImages: Record<string, { url: string; alt: string; objectPosition?: string }> = {
     "Youth Ministry": {
       url: "/youth-gallery/IMG_8491.JPG",
       alt: "Youth Ministry Service",
