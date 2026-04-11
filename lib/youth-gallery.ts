@@ -39,7 +39,7 @@ export const YOUTH_GALLERY_FILENAMES: readonly string[] = [
   'IMG_8464.JPG',
   'IMG_8442.JPG',
   'IMG_8401.JPG',
-  'IMG_8491.JPG',
+  'IMG_8523.JPG',
   'IMG_8509.JPG',
   'IMG_8393.JPG',
   'IMG_8466.JPG',
