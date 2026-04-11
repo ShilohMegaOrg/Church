@@ -3,6 +3,7 @@ export interface ImageAsset {
   width?: number
   height?: number
   alt?: string
+  objectPosition?: string
 }
 
 export interface Pastor {

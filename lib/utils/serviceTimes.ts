@@ -390,7 +390,7 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
   // Image mappings for recurring events
   const eventImages: Record<string, { url: string; alt: string }> = {
     "Youth Ministry": {
-      url: "/images/youth_activities.avif",
+      url: "/youth-gallery/IMG_8491.JPG",
       alt: "Youth Ministry Service",
     },
     "Thanksgiving Service": {
@@ -398,8 +398,9 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
       alt: "Thanksgiving Service - Monthly celebration and worship",
     },
     "Communion Service": {
-      url: "https://images.unsplash.com/photo-1520629716099-d147346eb224?w=1920&h=800&fit=crop&crop=center&q=80",
+      url: "/images/holy_communion.avif",
       alt: "Chalice and bread — Holy Communion",
+      objectPosition: "center 30%",
     },
     "Digging Deep": {
       url: "/youth-gallery/IMG_8487.JPG",

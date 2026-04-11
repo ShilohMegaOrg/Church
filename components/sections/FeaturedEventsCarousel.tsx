@@ -71,6 +71,7 @@ export function FeaturedEventsCarousel({ events }: FeaturedEventsCarouselProps) 
                 alt={currentEvent.image.alt || currentEvent.title}
                 fill
                 className="object-cover"
+                style={currentEvent.image.objectPosition ? { objectPosition: currentEvent.image.objectPosition } : undefined}
                 sizes="100vw"
                 priority
               />
