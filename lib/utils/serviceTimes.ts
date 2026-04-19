@@ -394,8 +394,8 @@ export function generateRecurringEvents(monthsAhead: number = 6): Event[] {
       alt: "Youth Ministry Service",
     },
     "Thanksgiving Service": {
-      url: "/images/thanksgiving_service.avif",
-      alt: "Thanksgiving Service - Monthly celebration and worship",
+      url: "/youth-gallery/IMG_6433.JPG",
+      alt: "Shiloh Mega Parish congregation standing in worship as pastors minister on stage during Thanksgiving Service",
     },
     "Communion Service": {
       url: "/images/holy_communion.avif",

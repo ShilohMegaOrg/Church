@@ -1,5 +1,18 @@
 [
   {
+    "id": "4",
+    "slug": "speak-your-due-season",
+    "title": "Speak Your Due Season",
+    "description": "Pastor Babarinde delivers a stirring charge to speak God's promises into your waiting season. Anchored in Leviticus 26:4 — 'I will pour you rain in your due season' — and Revelation 21:5–6, the message calls believers to declare life over delayed blessings and trust God to make all things new.",
+    "date": "2026-04-12T00:00:00.000Z",
+    "speaker": "Pastor Babarinde",
+    "image": {
+      "url": "/youth-gallery/IMG_babarinde-due-season.JPG",
+      "alt": "Pastor Babarinde preaching at Shiloh Mega Parish"
+    },
+    "videoUrl": "https://www.youtube.com/watch?v=eYX6UajLJdE&t=1630"
+  },
+  {
     "id": "3",
     "slug": "rain-of-restoration-in-our-due-season",
     "title": "Rain of Restoration in Our Due Season",

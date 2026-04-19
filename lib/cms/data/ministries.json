@@ -29,8 +29,8 @@
     "title": "Young Adults",
     "description": "Building community and faith for young adults.",
     "image": {
-      "url": "/youth-gallery/IMG_8393.JPG",
-      "alt": "Young adults smiling together at church"
+      "url": "/youth-gallery/IMG_8523.JPG",
+      "alt": "Young adults engaged during service at Shiloh Mega Parish"
     },
     "category": "age-groups",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">A community for young adults navigating career, relationships, and life decisions while growing in faith and building meaningful connections.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Trust in the Lord with all thine heart; and lean not unto thine own understanding.\"</p><p class=\"text-sm text-muted-foreground\">Proverbs 3:5 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Offer</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Bible study & discussions</li><li>• Fellowship & networking</li><li>• Life skills workshops</li><li>• Social events & activities</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Purpose</h3><p class=\"text-sm text-muted-foreground\">To provide a supportive community where young adults can grow spiritually, build lasting friendships, and discover God's purpose for their lives.</p></div></div></div>"
@@ -101,8 +101,8 @@
     "title": "Women's Ministry",
     "description": "Building strong women of faith.",
     "image": {
-      "url": "/images/womens_fellowship.avif",
-      "alt": "Women's Ministry"
+      "url": "/youth-gallery/IMG_8414.JPG",
+      "alt": "Women of Shiloh Mega Parish in worship with hands raised"
     },
     "category": "age-groups",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">A community of women supporting each other, growing in faith, and discovering their God-given purpose and identity in Christ.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"She is clothed with strength and dignity; she can laugh at the days to come.\"</p><p class=\"text-sm text-muted-foreground\">Proverbs 31:25 (NIV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Offer</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Bible studies & workshops</li><li>• Fellowship & networking</li><li>• Prayer & encouragement</li><li>• Special events & retreats</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Mission</h3><p class=\"text-sm text-muted-foreground\">To empower women to become all God created them to be—strong in faith, confident in their identity, and impactful in their spheres of influence.</p></div></div></div>"
@@ -113,8 +113,8 @@
     "title": "Men's Ministry",
     "description": "Building strong men of faith and character.",
     "image": {
-      "url": "/images/Mens_fellowship.avif",
-      "alt": "Men's Ministry"
+      "url": "/youth-gallery/IMG_8416.jpeg",
+      "alt": "Man of Shiloh Mega Parish in worship with hand raised"
     },
     "category": "age-groups",
     "content": "<div class=\"space-y-8\"><p class=\"text-lg leading-relaxed text-muted-foreground\">Empowering men to be godly leaders, faithful husbands, loving fathers, and strong pillars in their families and communities.</p><div class=\"border-l-4 border-primary bg-primary/5 p-6 rounded-r-lg\"><h3 class=\"text-lg font-semibold mb-3 text-primary\">Scripture</h3><p class=\"text-lg font-medium italic mb-2\">\"Watch ye, stand fast in the faith, quit you like men, be strong.\"</p><p class=\"text-sm text-muted-foreground\">1 Corinthians 16:13 (KJV)</p></div><div class=\"grid gap-6 md:grid-cols-2\"><div class=\"space-y-3\"><h3 class=\"font-semibold\">What We Offer</h3><ul class=\"space-y-1.5 text-sm text-muted-foreground\"><li>• Bible study & discipleship</li><li>• Accountability groups</li><li>• Leadership training</li><li>• Fellowship & events</li></ul></div><div class=\"space-y-3\"><h3 class=\"font-semibold\">Our Vision</h3><p class=\"text-sm text-muted-foreground\">To build men of integrity, character, and faith who lead by example, serve with humility, and impact their world for Christ.</p></div></div></div>"
