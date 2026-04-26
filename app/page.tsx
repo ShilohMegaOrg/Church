@@ -86,12 +86,13 @@ export default async function HomePage() {
           </div>
         </FadeInOnScroll>
         <StaggerChildren className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-2">
-          {pastors.map((pastor) => (
+          {pastors.slice(0, 2).map((pastor) => (
             <FadeInItem key={pastor.id}>
               <PastorCard
                 name={pastor.name}
                 title={pastor.title}
                 image={pastor.image.url}
+                objectPosition={pastor.image.objectPosition}
                 bio={pastor.bio}
               />
             </FadeInItem>
