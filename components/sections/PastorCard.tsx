@@ -8,30 +8,18 @@ interface PastorCardProps {
   name: string
   title: string
   image: string
+  objectPosition?: string
   bio?: string
 }
 
-export function PastorCard({ name, title, image, bio }: PastorCardProps) {
-  // Assistant Pastor needs top positioning to show hat fully
-  // Pastor's image needs specific positioning to show face - using center with top bias
-  const isPastorOlise = name.includes("Moses Olise") || image.includes("pastorOlise")
-  const isAssistantPastor = name.includes("Caroline Olise") || image.includes("AsstPastor")
-  const imageContainerClassName = isAssistantPastor
-    ? "relative h-80 w-full overflow-hidden sm:h-96"
-    : "relative h-80 w-full overflow-hidden sm:h-96"
-  const imageClassName = isPastorOlise 
-    ? "object-cover object-[center_25%]" 
-    : isAssistantPastor
-    ? "object-cover object-[center_10%] sm:object-[center_14%] md:object-[center_18%]" // Extra height + stronger top bias for more hat
-    : "object-cover"
-
+export function PastorCard({ name, title, image, objectPosition, bio }: PastorCardProps) {
   return (
     <motion.div
       whileHover={{ y: -8 }}
       transition={{ duration: 0.2 }}
     >
       <Card className="overflow-hidden transition-shadow hover:shadow-lg">
-        <div className={imageContainerClassName}>
+        <div className="relative h-80 w-full overflow-hidden sm:h-96">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -41,7 +29,8 @@ export function PastorCard({ name, title, image, bio }: PastorCardProps) {
               src={image}
               alt={name}
               fill
-              className={imageClassName}
+              className="object-cover"
+              style={{ objectPosition: objectPosition ?? "center" }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </motion.div>

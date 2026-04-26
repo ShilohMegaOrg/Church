@@ -41,14 +41,15 @@ export default async function AboutPage() {
       </div>
 
       <div className="mb-12">
-        <h2 className="mb-8 text-center text-3xl font-bold">Meet the Pastors</h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <h2 className="mb-8 text-center text-3xl font-bold">Meet Our Leadership</h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {pastors.map((pastor) => (
             <PastorCard
               key={pastor.id}
               name={pastor.name}
               title={pastor.title}
               image={pastor.image.url}
+              objectPosition={pastor.image.objectPosition}
               bio={pastor.bio}
             />
           ))}

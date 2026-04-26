@@ -6,7 +6,8 @@
     "bio": "Leading with vision and passion for God's work.",
     "image": {
       "url": "/images/pastorOlise.webp",
-      "alt": "Pastor Moses Olise"
+      "alt": "Pastor Moses Olise",
+      "objectPosition": "center 25%"
     }
   },
   {
@@ -16,7 +17,40 @@
     "bio": "Dedicated to serving the community with love and grace.",
     "image": {
       "url": "/images/MrsOlise.png",
-      "alt": "Pastor Caroline Olise"
+      "alt": "Pastor Caroline Olise",
+      "objectPosition": "center 14%"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Pastor Sylvester Egogo",
+    "title": "Assistant Pastor",
+    "bio": "Serving alongside leadership to shepherd the congregation with faithfulness and care.",
+    "image": {
+      "url": "/newpics/Pst_egogo.jpg",
+      "alt": "Pastor Sylvester Egogo",
+      "objectPosition": "center top"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Pastor Lotun Oluwabukola",
+    "title": "HOD — Meet & Greet Department",
+    "bio": "Ensuring every first-time visitor and returning member is welcomed with warmth into the Shiloh family.",
+    "image": {
+      "url": "/newpics/past_Lotun.jpg",
+      "alt": "Pastor Lotun Oluwabukola",
+      "objectPosition": "center top"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Busola Ojofeitimi",
+    "title": "HCF Coordinator",
+    "bio": "Coordinating the House Caring Fellowship to foster deep community, love, and support among members of RCCG Shiloh Mega Parish.",
+    "image": {
+      "url": "/newpics/MrsBusola.jpg",
+      "alt": "Busola Ojofeitimi"
     }
   }
 ]
