@@ -27,7 +27,7 @@
     "title": "Assistant Pastor",
     "bio": "Serving alongside leadership to shepherd the congregation with faithfulness and care.",
     "image": {
-      "url": "/newpics/Pst_egogo.jpg",
+      "url": "/newPics/Pst_egogo.jpg",
       "alt": "Pastor Sylvester Egogo",
       "objectPosition": "center top"
     }
@@ -38,7 +38,7 @@
     "title": "HOD — Meet & Greet Department",
     "bio": "Ensuring every first-time visitor and returning member is welcomed with warmth into the Shiloh family.",
     "image": {
-      "url": "/newpics/past_Lotun.jpg",
+      "url": "/newPics/past_Lotun.jpg",
       "alt": "Pastor Lotun Oluwabukola",
       "objectPosition": "center top"
     }
@@ -49,7 +49,7 @@
     "title": "HCF Coordinator",
     "bio": "Coordinating the House Caring Fellowship to foster deep community, love, and support among members of RCCG Shiloh Mega Parish.",
     "image": {
-      "url": "/newpics/MrsBusola.jpg",
+      "url": "/newPics/MrsBusola.jpg",
       "alt": "Busola Ojofeitimi"
     }
   }
